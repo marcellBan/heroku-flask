@@ -1,1 +1,3 @@
 theme: jekyll-theme-slate
+title: Deploying a Flask app to Heroku
+description: A step-by-step guide to deploying a Flask app to Heroku with the option of using Heroku Postgres and psycopg2 as a database
