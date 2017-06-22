@@ -26,7 +26,7 @@ Activate your account with the link in the email they send you.
 
 ## Create an app on Heroku
 
-Create a new app on the dashboard.
+Create a new app on the [dashboard](https://dashboard.heroku.com/apps).
 
 ![Create app button](images/create-app.png)
 
