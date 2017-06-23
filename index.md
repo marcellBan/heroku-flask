@@ -109,8 +109,14 @@ requests==2.9.1
 This file tells *Heroku* what kind of app you are trying to run and how to run it. The contents are pretty simple for our purposes:
 
 ```plaintext
-web: gunicorn app:app
+web: gunicorn {app_filename}:{app_variable_name}
 ```
+
+`{app_filename}` needs to be your apps main file without the *.py* extension this file needs to contain the initialization of the *Flask* object (eg.: `app = Flask(__name__)`) (it will be most likely called `app.py` or `main.py`).
+
+`{app_variable_name}` needs to be the name of the variable containing the *Flask* object (eg.: `app` from the above example).
+
+*Sidenote: using `gunicorn` this way means that you don't need the usual `if __name__ == '__main__':` block in your code as `gunicorn` will call `run()` on your app when needed.*
 
 ## Heroku Postgres
 
@@ -189,14 +195,14 @@ The last step is to upload your app to *Heroku* and let it build.
 You will have to specify which branch to upload (most likely it will be `master`).
 
 ```shell
-git push heroku {branch_name}
+git push heroku {branch_name}:master
 ```
 
 Now *Heroku* will install all the packages listed in the `requirements.txt` file and then build and launch your app. If it fails please read the output it will more than likely tell you the exact problem.
 
 For further troubleshooting you can also use the `heroku logs` command which will also show any error that occured during the *normal* operation of your app.
 
-Codecool students are free to contact me for further info/help.
+Codecool students are welcome to contact me for further info/help.
 
 ## Pip pitfalls
 
