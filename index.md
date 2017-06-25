@@ -145,7 +145,7 @@ The second command will open up a remote connection to your database (the interf
 
 ### Loading the configuration in your app and connecting it to the database
 
-If you are using *python2.7* you can head over to [Heroku's dev center](https://www.humblebundle.com/store/killing-floor?hmb_campaign=killingfloor_freegame_2017&hmb_source=bundle_page&hmb_medium=banner_cross) as the example code there will work just fine.
+If you are using *python2.7* you can head over to [Heroku's dev center](https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-python) as the example code there will work just fine.
 
 If you are using *python3* you will need to change some things around.
 
