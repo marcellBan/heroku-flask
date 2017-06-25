@@ -141,7 +141,7 @@ heroku pg:psql
 
 The first command will ask for your credentials, use the email and password that you use for your *Heroku* account.
 
-The second command will open up a remote connection to your database (the interface is basically identical to the standard `psql` program that you might run from the terminal with only a few minor features missing). Now you can run your SQL queries to set up your database. When you are done you can exit with the usual `\q`.
+The second command will open up a remote connection to your database (the interface is basically identical to the standard `psql` program that you might run from the terminal with only a few minor features missing). Now you can run your SQL queries to set up your database. When you are done you can exit with the usual `\q`. Also you will need to run this command in your project directory or specify your app with the `-a {app-name}` option.
 
 ### Loading the configuration in your app and connecting it to the database
 
