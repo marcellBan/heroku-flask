@@ -189,6 +189,7 @@ Now to add *Heroku* as a remote to your git repository run:
 heroku git:remote -a {your app name}
 ```
 
+Here the '{your app name}' is the name you gave the app on Heroku page.
 You will need to be logged in to heroku to do this (you can log in with the `heroku login` command) and you need to specify the app name that you typed in at the begining of this guide or the one that *Heroku* generated for you if you have not typed in anything (either way you can look it up on your dashboard).
 
 The last step is to upload your app to *Heroku* and let it build.
