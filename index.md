@@ -84,7 +84,7 @@ To make *Heroku* run your app properly you will need three configuration files (
 
 This file contains one line with the python version you want to use.
 
-You can find the latest supported versions on [Heroku's dev center](https://devcenter.heroku.com/articles/python-runtimes#supported-python-runtimes).
+**You can find the latest supported versions on [Heroku's dev center](https://devcenter.heroku.com/articles/python-runtimes#supported-python-runtimes).**
 
 So for example:
 
@@ -96,7 +96,7 @@ python-3.8.9
 
 This file will contain all the packages and their versions that your project depends on.
 
-For the basic *Flask* app you will need at least these lines (you can get your installed versions from the command `pip freeze`):
+For the basic *Flask* app you will need at least these lines (you can get your installed versions from the command `pip freeze > requirements.txt`):
 
 ```plaintext
 Flask==0.12.1
@@ -128,7 +128,7 @@ web: gunicorn {app_filename}:{app_variable_name}
 
 `{app_variable_name}` needs to be the name of the variable containing the *Flask* object (eg.: `app` from the above example).
 
-*Sidenote: using `gunicorn` this way means that you don't need the usual `if __name__ == '__main__':` block in your code as `gunicorn` will call `run()` on your app when needed.*
+*Side note: using `gunicorn` this way means that you don't need the usual `if __name__ == '__main__':` block in your code as `gunicorn` will call `run()` on your app when needed.*
 
 ## Heroku Postgres
 
@@ -142,6 +142,18 @@ Go to your dashboard on *Heroku* and select your app. Then navigate to the resou
 
 Find the '*Heroku Postgres*' add-on and install it to your application.
 
+Alternatively you can use command line to attach the add-on to your application.
+If you want to execute *Heroku* command through terminal you have to log in:
+```shell
+heroku login
+```
+This command will ask for your credentials, use the email and password that you use for your *Heroku* account.
+
+Now you can add *Heroku Postgres* with the following command:
+```shell
+heroku addons:create heroku-postgresql:hobby-dev --app {heroku_app_name}
+```
+
 ### Loading up your database schema
 
 Run the following commands in a terminal window:
@@ -150,10 +162,12 @@ Run the following commands in a terminal window:
 heroku login
 heroku pg:psql
 ```
+The second command will open up a remote connection to your *Heroku* app database (the interface is basically identical to the standard `psql` program that you might run from the terminal with only a few minor features missing). Now you can run your SQL queries to set up your database. When you are done you can exit with the usual `\q`. Also you will need to run this command in your project directory or specify your app with the `--app {heroku_app_name}` option.
 
-The first command will ask for your credentials, use the email and password that you use for your *Heroku* account.
-
-The second command will open up a remote connection to your database (the interface is basically identical to the standard `psql` program that you might run from the terminal with only a few minor features missing). Now you can run your SQL queries to set up your database. When you are done you can exit with the usual `\q`. Also you will need to run this command in your project directory or specify your app with the `-a {app-name}` option.
+If you want to load sql file from the command line execute the following command:
+```shell
+heroku pg:psql --app {heroku_app_name} < {sql_file}
+```
 
 ### Loading the configuration in your app and connecting it to the database
 
@@ -201,7 +215,7 @@ Now to add *Heroku* as a remote to your git repository run:
 heroku git:remote -a {your app name}
 ```
 
-You will need to be logged in to heroku to do this (you can log in with the `heroku login` command) and you need to specify the app name that you typed in at the begining of this guide or the one that *Heroku* generated for you if you have not typed in anything (either way you can look it up on your dashboard).
+You will need to be logged in to heroku to do this (you can log in with the `heroku login` command) and you need to specify the app name that you typed in at the beginning of this guide or the one that *Heroku* generated for you if you have not typed in anything (either way you can look it up on your dashboard).
 
 The last step is to upload your app to *Heroku* and let it build.
 You will have to specify which branch to upload (most likely it will be `master`).
@@ -212,7 +226,7 @@ git push heroku {branch_name}:master
 
 Now *Heroku* will install all the packages listed in the `requirements.txt` file and then build and launch your app. If it fails please read the output it will more than likely tell you the exact problem.
 
-For further troubleshooting you can also use the `heroku logs` command which will also show any error that occured during the *normal* operation of your app.
+For further troubleshooting you can also use the `heroku logs` command which will also show any error that occurred during the *normal* operation of your app.
 
 Codecool students are welcome to contact me for further info/help.
 
