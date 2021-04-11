@@ -2,15 +2,25 @@
 
 ## Table of contents
 
-1. [Foreword](#foreword)
-1. [Create an account on Heroku](#create-an-account-on-heroku)
-1. [Create an app on Heroku](#create-an-app-on-heroku)
-1. [Install the Heroku CLI](#install-the-heroku-cli)
-1. [Install the gunicorn package](#install-the-gunicorn-package)
-1. [Create config files](#create-config-files)
-1. [Heroku Postgres](#heroku-postgres)
-1. [Deploy the app with git](#deploy-the-app-with-git)
-1. [Pip pitfalls](#pip-pitfalls)
+- [Deploying a Flask app to Heroku](#deploying-a-flask-app-to-heroku)
+  - [Table of contents](#table-of-contents)
+  - [Foreword](#foreword)
+  - [Create an account on Heroku](#create-an-account-on-heroku)
+  - [Create an app on Heroku](#create-an-app-on-heroku)
+  - [Install the Heroku CLI](#install-the-heroku-cli)
+  - [Install the gunicorn package](#install-the-gunicorn-package)
+    - [Why do you need gunicorn](#why-do-you-need-gunicorn)
+    - [Installing gunicorn](#installing-gunicorn)
+  - [Create config files](#create-config-files)
+    - [`runtime.txt`](#runtimetxt)
+    - [`requirements.txt`](#requirementstxt)
+    - [`Procfile`](#procfile)
+  - [Heroku Postgres](#heroku-postgres)
+    - [Installing the Heroku Postgres add-on](#installing-the-heroku-postgres-add-on)
+    - [Loading up your database schema](#loading-up-your-database-schema)
+    - [Loading the configuration in your app and connecting it to the database](#loading-the-configuration-in-your-app-and-connecting-it-to-the-database)
+  - [Deploy the app with git](#deploy-the-app-with-git)
+  - [Pip pitfalls](#pip-pitfalls)
 
 ## Foreword
 
@@ -77,7 +87,7 @@ You can find the latest supported versions on [Heroku's dev center](https://devc
 So for example:
 
 ```plaintext
-python-3.6.1
+python-3.8.9
 ```
 
 ### `requirements.txt`
