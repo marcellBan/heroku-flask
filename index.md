@@ -19,6 +19,8 @@
     - [Installing the Heroku Postgres add-on](#installing-the-heroku-postgres-add-on)
     - [Loading up your database schema](#loading-up-your-database-schema)
     - [Loading the configuration in your app and connecting it to the database](#loading-the-configuration-in-your-app-and-connecting-it-to-the-database)
+  - [Get your application configuration](#get-your-application-configuration)
+  - [Multiple or shared database](#multiple-or-shared-database)
   - [Deploy the app with git](#deploy-the-app-with-git)
   - [Pip pitfalls](#pip-pitfalls)
 
@@ -178,22 +180,25 @@ If you are using *python3* you will need to change some things around.
 ```python
 import os
 import psycopg2
-import urllib
 
-urllib.parse.uses_netloc.append('postgres')
-url = urllib.parse.urlparse(os.environ.get('DATABASE_URL'))
-connection = psycopg2.connect(
-    database=url.path[1:],
-    user=url.username,
-    password=url.password,
-    host=url.hostname,
-    port=url.port
-)
+connection_string = os.environ.get('DATABASE_URL')
+connection = psycopg2.connect(connection_string)
 ```
 
-As you can see above you need to import `urllib` not `urlparse` as this was changed in *python3* and the function calls are a bit different too.
-
 With these changes your app should be ready for deployment.
+
+## Get your application configuration
+
+If you are interested in your heroku app's configuration you can check it with this command:
+
+```shell
+heroku config --app {heroku_app_name}
+```
+
+It lists the configuration and environment variables of your *Heroku* application.
+
+## Multiple or shared database
+If you want to add multiple database or share your database between multiple appliaction visit [Heroku's postgres site](https://devcenter.heroku.com/articles/heroku-postgresql#designating-a-primary-database)
 
 ## Deploy the app with git
 
