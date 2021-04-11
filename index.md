@@ -12,9 +12,9 @@
     - [Why do you need gunicorn](#why-do-you-need-gunicorn)
     - [Installing gunicorn](#installing-gunicorn)
   - [Create config files](#create-config-files)
-    - [`runtime.txt`](#runtimetxt)
-    - [`requirements.txt`](#requirementstxt)
-    - [`Procfile`](#procfile)
+    - [Create the `runtime.txt`](#create-the-runtimetxt)
+    - [Create the `requirements.txt`](#create-the-requirementstxt)
+    - [Create the `Procfile`](#creat-the-procfile)
   - [Heroku Postgres](#heroku-postgres)
     - [Installing the Heroku Postgres add-on](#installing-the-heroku-postgres-add-on)
     - [Loading up your database schema](#loading-up-your-database-schema)
@@ -76,9 +76,11 @@ pip install gunicorn
 
 ## Create config files
 
-To make *Heroku* run your app properly you will need three configuration files. All off them need to be in the root directory of your project (git repository).
+To make *Heroku* run your app properly you will need three configuration files (`runtime.txt`, `requirements.txt`, `Procfile`). All off them need to be in the root directory of your project (git repository).
 
-### `runtime.txt`
+
+
+### Create the `runtime.txt`
 
 This file contains one line with the python version you want to use.
 
@@ -90,7 +92,7 @@ So for example:
 python-3.8.9
 ```
 
-### `requirements.txt`
+### Create the `requirements.txt`
 
 This file will contain all the packages and their versions that your project depends on.
 
@@ -112,7 +114,7 @@ psycopg2==2.7.1
 requests==2.9.1
 ```
 
-### `Procfile`
+### Create the `Procfile`
 
 **This file needs to be called exactly like this (without extension and with the uppercase '*P*').**
 
